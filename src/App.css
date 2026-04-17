@@ -1,5 +1,5 @@
 /* ===============================
-   FINAL PREMIUM CSS - MOBILE RESPONSIVE
+   FINAL PREMIUM CSS - UPDATED
 ================================== */
 
 /* RESET */
@@ -18,7 +18,7 @@ body{
 }
 
 /* ===============================
-   MOVING PARTICLES BACKGROUND
+   MOVING PARTICLES
 ================================== */
 .particles{
   position:fixed;
@@ -49,12 +49,8 @@ body{
 .particles span:nth-child(8){left:15%;animation-delay:7s;}
 
 @keyframes float{
-  0%{
-    transform:translateY(100vh) scale(0);
-  }
-  100%{
-    transform:translateY(-10vh) scale(1.5);
-  }
+  0%{transform:translateY(100vh) scale(0);}
+  100%{transform:translateY(-10vh) scale(1.5);}
 }
 
 /* ===============================
@@ -78,7 +74,6 @@ body{
   gap:12px;
 }
 
-/* ROTATING LOGO */
 .nav-logo{
   width:52px;
   height:52px;
@@ -87,17 +82,12 @@ body{
 }
 
 @keyframes spinLogo{
-  from{
-    transform:rotate(0deg);
-  }
-  to{
-    transform:rotate(360deg);
-  }
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 
 .brand h1{
   font-size:28px;
-  color:white;
   font-weight:bold;
 }
 
@@ -119,12 +109,11 @@ nav a:hover{
 }
 
 /* ===============================
-   HERO SECTION
+   HERO
 ================================== */
 .hero{
   text-align:center;
   padding:90px 20px;
-  border-color: #f44b08;
 }
 
 .hero h2{
@@ -173,7 +162,7 @@ nav a:hover{
 }
 
 /* ===============================
-   SIDE BY SIDE CONTENT + IMAGE
+   CONTENT ROW
 ================================== */
 .info-row{
   display:flex;
@@ -182,7 +171,6 @@ nav a:hover{
   gap:35px;
 }
 
-/* ORANGE BOX */
 .orange-box{
   flex:1;
   background:#ea580c;
@@ -197,7 +185,6 @@ nav a:hover{
   margin-bottom:14px;
 }
 
-/* IMAGE */
 .side-image{
   flex:1;
 }
@@ -205,21 +192,16 @@ nav a:hover{
 .side-image img{
   width:100%;
   max-width:520px;
-  height: 250px;
+  height:250px;
   object-fit:cover;
   border-radius:18px;
   display:block;
   margin:auto;
   box-shadow:0 10px 25px rgba(0,0,0,.35);
-  transition:.4s;
-}
-
-.side-image img:hover{
-  transform:scale(1.03);
 }
 
 /* ===============================
-   PROJECT SECTION
+   PROJECTS
 ================================== */
 .project-grid{
   display:grid;
@@ -263,7 +245,6 @@ nav a:hover{
 
 .footer h2{
   font-size:40px;
-  color:white;
 }
 
 .footer p{
@@ -277,7 +258,82 @@ nav a:hover{
 }
 
 /* ===============================
-   TABLET RESPONSIVE
+   POPUP FORM
+================================== */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  z-index:9999;
+}
+
+.popup-box{
+  background:#111827;
+  width:100%;
+  max-width:520px;
+  padding:30px;
+  border-radius:22px;
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+  animation:popupShow .3s ease;
+}
+
+@keyframes popupShow{
+  from{
+    opacity:0;
+    transform:scale(.8);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.popup-box h2{
+  text-align:center;
+  color:#f97316;
+  margin-bottom:20px;
+}
+
+.popup-box input,
+.popup-box textarea{
+  width:100%;
+  padding:14px;
+  margin:8px 0;
+  border:none;
+  outline:none;
+  border-radius:12px;
+  font-size:16px;
+}
+
+.popup-box textarea{
+  min-height:100px;
+  resize:none;
+}
+
+.close-btn{
+  width:100%;
+  margin-top:10px;
+  padding:14px;
+  border:none;
+  border-radius:50px;
+  background:#dc2626;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.close-btn:hover{
+  background:#b91c1c;
+}
+
+/* ===============================
+   TABLET
 ================================== */
 @media(max-width:992px){
 
@@ -296,17 +352,8 @@ nav a:hover{
     font-size:42px;
   }
 
-  .hero p{
-    font-size:18px;
-  }
-
   .info-row{
     flex-direction:column;
-  }
-
-  .side-image img{
-    max-width:100%;
-    height:300px;
   }
 
   .section{
@@ -315,7 +362,7 @@ nav a:hover{
 }
 
 /* ===============================
-   MOBILE RESPONSIVE
+   MOBILE
 ================================== */
 @media(max-width:768px){
 
@@ -329,26 +376,16 @@ nav a:hover{
     text-align:center;
   }
 
-  nav{
-    gap:14px;
-  }
-
-  nav a{
-    font-size:15px;
-  }
-
   .hero{
     padding:70px 15px;
   }
 
   .hero h2{
     font-size:32px;
-    line-height:1.4;
   }
 
   .hero p{
     font-size:16px;
-    line-height:1.7;
   }
 
   .section h2{
@@ -356,29 +393,25 @@ nav a:hover{
   }
 
   .orange-box{
-    padding:22px;
     font-size:16px;
+    padding:22px;
   }
 
   .side-image img{
     height:240px;
   }
 
-  .project-card h3{
-    font-size:18px;
-  }
-
   .footer h2{
     font-size:30px;
-  }
-
-  .footer p{
-    font-size:16px;
   }
 
   .join-btn{
     font-size:16px;
     padding:12px 28px;
+  }
+
+  .popup-box{
+    padding:22px;
   }
 }
 
@@ -389,16 +422,8 @@ nav a:hover{
     font-size:28px;
   }
 
-  .section{
-    padding:50px 15px;
-  }
-
   .section h2{
     font-size:26px;
-  }
-
-  .brand h1{
-    font-size:20px;
   }
 
   .nav-logo{
