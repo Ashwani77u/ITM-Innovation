@@ -1,8 +1,19 @@
 import React, { useState } from "react";
 import "./App.css";
+import { supabase } from "./supabase";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    course: "",
+    year: "",
+    skills: "",
+    idea: "",
+  });
 
   const projects = [
     { name: "Manavrahit Folding Naav", img: "ph1.jpg.jpeg" },
@@ -12,18 +23,46 @@ function App() {
     { name: "Defence Hand Gloves", img: "ph5.jpeg" },
   ];
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { error } = await supabase
+      .from("join_members")
+      .insert([formData]);
+
+    if (error) {
+      alert("Data Save Failed");
+      console.log(error);
+    } else {
+      alert("Successfully Submitted 🚀");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        course: "",
+        year: "",
+        skills: "",
+        idea: "",
+      });
+
+      setShowForm(false);
+    }
+  };
+
   return (
     <div>
       {/* Moving Background */}
       <div className="particles">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
       </div>
 
       {/* Navbar */}
@@ -47,7 +86,7 @@ function App() {
 
         <p>
           Innovation Cell is a platform where students build real-world
-          projects, learn technologies and showcase their innovation in our IoT Lab.
+          projects, learn technologies and showcase innovation in our IoT Lab.
         </p>
 
         <button className="join-btn" onClick={() => setShowForm(true)}>
@@ -67,8 +106,7 @@ function App() {
             </p>
 
             <p>
-              Students get mentorship, technical guidance and hands-on experience
-              using advanced tools in the IoT Lab.
+              Students get mentorship, technical guidance and hands-on experience.
             </p>
 
             <p>
@@ -135,14 +173,66 @@ function App() {
           <div className="popup-box">
             <h2>Join Innovation Cell</h2>
 
-            <form>
-              <input type="text" placeholder="Full Name" required />
-              <input type="email" placeholder="Email" required />
-              <input type="text" placeholder="Phone Number" required />
-              <input type="text" placeholder="Course / Branch" required />
-              <input type="text" placeholder="Year" required />
-              <input type="text" placeholder="Skills" />
-              <textarea placeholder="Your Idea"></textarea>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+
+              <input
+                type="text"
+                name="phone"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
+
+              <input
+                type="text"
+                name="course"
+                placeholder="Course / Branch"
+                value={formData.course}
+                onChange={handleChange}
+                required
+              />
+
+              <input
+                type="text"
+                name="year"
+                placeholder="Year"
+                value={formData.year}
+                onChange={handleChange}
+                required
+              />
+
+              <input
+                type="text"
+                name="skills"
+                placeholder="Skills"
+                value={formData.skills}
+                onChange={handleChange}
+              />
+
+              <textarea
+                name="idea"
+                placeholder="Your Idea"
+                value={formData.idea}
+                onChange={handleChange}
+              ></textarea>
 
               <button type="submit" className="join-btn">
                 Submit
