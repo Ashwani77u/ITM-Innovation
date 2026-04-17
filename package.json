@@ -2,10 +2,7 @@
   "name": "innovation-cell",
   "version": "0.1.0",
   "private": true,
-<<<<<<< HEAD
-  "homepage":"./",
-=======
->>>>>>> 8669e0011fabe9da66578df18795ae36bc5fbf9f
+  "homepage": "./",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
